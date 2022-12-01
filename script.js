@@ -37,6 +37,8 @@
 //     possibleChars
 // }
 
+
+//these are the global variables that will be able to be accesses through all functions 
 var lowerCase = [
   'a',
   'b',
@@ -96,31 +98,30 @@ var upperCase = [
 var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 var symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+'];
 
-function passwordOptions () {
-  // () means it doesn't need to run, but will perform whatever task is assigned inside
-  var numChars = parseInt (
-    prompt ('how many characters would you like in your passord')
-  );
+//function 'pw' here consists of an alert to ask user how many character they want in theor pw
+function passwordOptions () { 
 
-  var specialChars = confirm ('Would you like special characters');
-  var numericalNums = confirm ('Would you like any numbers');
-  var lowerChars = confirm ('Would you like any lower case letters');
-  var upperChars = confirm ('Would you like any upper case letters');
+    prompt ('Hello! How many characters would you like in your passord?');  //this is the first alert user's going to see
 
+  var specialChars = confirm ('Would you like special characters?');
+  var numericalNums = confirm ('How about any numbers?');
+  var lowerChars = confirm ('Lowercase numbers?');
+  var upperChars = confirm ('Lastly, would you like some upper case letters?');
+
+  //storing (arrays) variables in an object
   var options = {
-    //storing (arrays) variables in an object
     numChars,
     specialChars,
     numericalNums,
     lowerChars,
     upperChars,
   };
-
+//done here:
   return options;
 }
 
-function generatePassword () {
-  //tied to a button...?
+function generatePassword () {   //Another function to be ran 
+  
   console.log (`this is upperCase ${upperCase}`); // string intropelalalalala
   var options = passwordOptions (); //if labeled to a let, it could only exist inside
   var possibleChars = [];  //same deal as below 
