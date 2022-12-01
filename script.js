@@ -97,6 +97,7 @@ var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 var symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+'];
 
 function passwordOptions () {
+  // () means it doesn't need to run, but will perform whatever task is assigned inside
   var numChars = parseInt (
     prompt ('how many characters would you like in your passord')
   );
@@ -107,6 +108,7 @@ function passwordOptions () {
   var upperChars = confirm ('Would you like any upper case letters');
 
   var options = {
+    //storing (arrays) variables in an object
     numChars,
     specialChars,
     numericalNums,
@@ -118,25 +120,31 @@ function passwordOptions () {
 }
 
 function generatePassword () {
-  var options = passwordOptions ();
-  var possibleChars = [];
-  var password = [];
+  //tied to a button...?
+  console.log (`this is upperCase ${upperCase}`); // string intropelalalalala
+  var options = passwordOptions (); //if labeled to a let, it could only exist inside
+  var possibleChars = [];  //same deal as below 
+  var password = [];    //creating erray for PW
 
   // conditional staement with a 4loop inside to get the random characters
 
   if (options.upperChars === true) {
+    //using Dot to access arrays
+    //going through and selewcting randoOne
     for (let i = 0; i < options.numChars; i++) {
-      var charIndex = Math.floor (Math.random () * upperCase.length);
+      var charIndex = Math.floor (Math.random () * upperCase.length); //find the length of how many uper chase there are, limited from 0-26
+      //taking the lowest decimal floor
       var randChar = upperCase[charIndex];
       possibleChars.push (randChar);
     }
   }
 
   if (options.lowerChars === true) {
+    //cLog this b4 if statemet
     for (let i = 0; i < options.numChars; i++) {
-      var charIndex = Math.floor (Math.random () * lowerCase.length);
+      var charIndex = Math.floor (Math.random () * lowerCase.length); //building the PW, going through these characters declared, getting the length anf grabbing the lowest/round/down and storing
       var randChar = lowerCase[charIndex];
-      possibleChars.push (randChar);
+      possibleChars.push (randChar); //conCat to possibleChars array
     }
   }
 
@@ -159,10 +167,10 @@ function generatePassword () {
   for (let i = 0; i < options.numChars; i++) {
     var charIndex = Math.floor (Math.random () * possibleChars.length);
     var randChar = possibleChars[charIndex];
-    password.push(randChar);
+    password.push (randChar);
   }
 
-  return password.join ('');
+  return password.join ('');  //.join in the fun we're running 
 }
 
 // Get references to the #generate element
@@ -170,11 +178,11 @@ var generateBtn = document.querySelector ('#generate');
 
 // Write password to the #password input
 function writePassword () {
-  var password = generatePassword ();
+  var password = generatePassword ();   //envoking as soon as button/event lsistner clicked/ran (serries of events )
   var passwordText = document.querySelector ('#password');
 
-  passwordText.value = password;
+  passwordText.value = password;   //storing PW in the value attributeed to this objecty 
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener ('click', writePassword);
+generateBtn.addEventListener ('click', writePassword); //listening for the click event then then running the functionWP
